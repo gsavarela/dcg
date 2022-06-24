@@ -6,6 +6,13 @@ ENV CUDA_PATH /usr/local/cuda
 ENV CUDA_INCLUDE_PATH /usr/local/cuda/include
 ENV CUDA_LIBRARY_PATH /usr/local/cuda/lib64
 
+# Update GPG Keys
+# https://forums.developer.nvidia.com/t/gpg-error-http-developer-download-nvidia-com-compute-cuda-repos-ubuntu1804-x86-64/212904
+RUN  apt-key del A4B469963BF863CC && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3bf863cc && apt-get update -y &&  \
+    apt-get install -y wget && \
+    wget -qO- https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/3bf863cc.pub | apt-key add -
+  
+
 # Ubuntu Packages
 RUN apt-get update -y && apt-get install software-properties-common -y && \
     add-apt-repository -y multiverse && apt-get update -y && apt-get upgrade -y && \

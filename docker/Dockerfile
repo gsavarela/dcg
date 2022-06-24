@@ -31,7 +31,7 @@ RUN apt-get update -y && apt-get install -y curl libssl-dev openssl libopenblas-
 RUN apt-get update
 RUN apt-get -y install python3
 RUN apt-get -y install python3-pip
-RUN pip3 install --upgrade pip
+RUN pip3 install pip==20.2 
 
 # Python packages we use (or used at one point...)
 RUN pip3 install numpy scipy pyyaml matplotlib
